@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0">
+<meta name="theme-color" content="#07090F">
+<meta name="description" content="Spätii – Nacht-Supermarkt mit Auto-Lieferung in Linz & Umgebung. Über 240 Produkte. Lieferung in unter 60 Minuten. Di–Sa bis 2 Uhr.">
+<meta name="keywords" content="Nacht-Supermarkt Linz, Lieferung Linz, Bier liefern lassen, Spätkauf Linz, Auto-Lieferung, Pizza Linz, Spirits liefern">
+<meta name="robots" content="index,follow">
+<meta name="author" content="Spätii Linz">
+<title>Spätii – Dein Nacht-Supermarkt · Lieferung in &lt;60 Min · Linz</title>
+
+<!-- OpenGraph -->
+<meta property="og:title" content="Spätii – Dein Nacht-Supermarkt">
+<meta property="og:description" content="Auto-Lieferung in unter 60 Min. Linz & Umgebung. Di–Sa bis 2 Uhr. Über 240 Produkte.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_AT">
+<meta property="og:url" content="https://www.spaetii.at">
+<meta property="og:site_name" content="Spätii">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Spätii – Dein Nacht-Supermarkt">
+<meta name="twitter:description" content="Auto-Lieferung unter 60 Min. Linz & Umgebung. Di–Sa bis 2 Uhr.">
+
+<!-- Performance: Preconnect -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://wa.me">
+
+<!-- Security -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data: https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https: data:; img-src 'self' data: https:; connect-src 'self' https:; frame-ancestors *; base-uri 'self'; form-action *">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Spätii","description":"Nacht-Supermarkt mit Auto-Lieferung in Linz und Umgebung","url":"https://www.spaetii.at","priceRange":"€€","address":{"@type":"PostalAddress","addressLocality":"Linz","addressRegion":"Oberösterreich","postalCode":"4020","addressCountry":"AT"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Sunday"],"opens":"19:00","closes":"00:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Friday","Saturday"],"opens":"19:00","closes":"02:00"}],"areaServed":["Linz","Leonding","Traun","Enns","Pasching","Ansfelden","Wels","Steyr"]}
+</script>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- PWA Manifest -->
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='40' fill='%23070912'/%3E%3Ccircle cx='96' cy='96' r='60' fill='%23C040F0'/%3E%3Ctext x='96' y='115' font-size='70' text-anchor='middle' fill='white'%3E%F0%9F%8C%99%3C/text%3E%3C/svg%3E">
+
+<!-- Styles -->
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader"><div class="loader-spin"></div><div class="loader-txt">Spätii lädt...</div></div>
+
+<!-- FLASH BAR -->
+<div class="flash-bar" id="flashBar">
+  <span class="flash-emoji">⚡</span>
+  <span class="flash-text"><strong>10% Welcome-Code:</strong> SPAETII10 · Lieferung in &lt;60 Min</span>
+  <button class="flash-close" onclick="App.closeFlash()" aria-label="Schließen">×</button>
+</div>
+
+<!-- TOP NAVIGATION -->
+<nav class="topnav">
+  <div class="nav-inner">
+    <button class="logo" onclick="App.goPage('home')">
+      <span class="logo-icon">🌙</span>
+      <span class="logo-text">SPÄTII</span>
+    </button>
+    
+    <div class="nav-pills">
+      <button class="nav-pill active" data-page="home" onclick="App.goPage('home')">Start</button>
+      <button class="nav-pill" data-page="sortiment" onclick="App.goPage('sortiment')">Sortiment</button>
+      <button class="nav-pill" data-page="deals" onclick="App.goPage('deals')">Deals</button>
+      <button class="nav-pill" data-page="community" onclick="App.goPage('community')">Community</button>
+      <button class="nav-pill" data-page="lieferung" onclick="App.goPage('lieferung')">Lieferung</button>
+      <button class="nav-pill" data-page="kontakt" onclick="App.goPage('kontakt')">Kontakt</button>
+    </div>
+    
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="themeToggle" onclick="App.toggleTheme()" title="Theme" aria-label="Theme wechseln">🌙</button>
+      <button class="nav-icon-btn wishlist-btn" onclick="App.goPage('wishlist')" aria-label="Wunschliste" title="Wunschliste">
+        💜
+        <span class="wishlist-badge" id="wishlistBadge" style="display:none">0</span>
+      </button>
+      <button class="nav-icon-btn cart-btn" onclick="App.openCart()" aria-label="Warenkorb">
+        🛒
+        <span class="cart-badge" id="cartBadge" style="display:none">0</span>
+      </button>
+      <button class="cta-btn" onclick="App.goPage('sortiment')">Bestellen →</button>
+      <button class="hamburger" onclick="App.openMobileNav()" aria-label="Menü">☰</button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" onclick="App.closeMobileNav()" aria-label="Schließen">×</button>
+  <button class="mobile-nav-pill active" data-page="home" onclick="App.goPage('home');App.closeMobileNav()">🏠 Start</button>
+  <button class="mobile-nav-pill" data-page="sortiment" onclick="App.goPage('sortiment');App.closeMobileNav()">🛍 Sortiment</button>
+  <button class="mobile-nav-pill" data-page="deals" onclick="App.goPage('deals');App.closeMobileNav()">⚡ Deals</button>
+  <button class="mobile-nav-pill" data-page="community" onclick="App.goPage('community');App.closeMobileNav()">👑 Community</button>
+  <button class="mobile-nav-pill" data-page="wishlist" onclick="App.goPage('wishlist');App.closeMobileNav()">💜 Wunschliste</button>
+  <button class="mobile-nav-pill" data-page="lieferung" onclick="App.goPage('lieferung');App.closeMobileNav()">🚗 Lieferung</button>
+  <button class="mobile-nav-pill" data-page="kontakt" onclick="App.goPage('kontakt');App.closeMobileNav()">📞 Kontakt</button>
+</div>
+<div class="mobile-overlay" id="mobileOverlay" onclick="App.closeMobileNav()"></div>
+
+<!-- INFO BAR -->
+<div class="info-bar">
+  <div class="info-bar-inner">
+    <button class="info-pill" onclick="App.openZones()">📍 Lieferorte</button>
+    <button class="info-pill" onclick="App.openPfand()"><span>♻️</span> Pfand: <strong>0,25€/Flasche</strong> sofort Cash</button>
+    <button class="info-pill" onclick="App.goPage('lieferung')"><span>🚗</span> Lieferung in <strong>&lt;60 Min</strong></button>
+    <button class="info-pill" onclick="App.goPage('kontakt')"><span>💳</span> Apple Pay · Google Pay · Visa</button>
+  </div>
+</div>
+
+<!-- ═══ MAIN CONTENT ═══ -->
+<main id="main">
+
+<!-- ── PAGE: HOME ── -->
+<section class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-bg">
+      <div class="hero-glow hero-glow-1"></div>
+      <div class="hero-glow hero-glow-2"></div>
+      <div class="hero-stars" id="heroStars"></div>
+    </div>
+    <div class="hero-content">
+      <span class="hero-tag">🌙 NACHT-SUPERMARKT · LINZ</span>
+      <h1 class="hero-title">DEIN<br><span class="grad-text">NACHT-</span><br>SUPERMARKT</h1>
+      <p class="hero-subtitle">Bier, Snacks, Spirits & alles fürs Wochenende. Geliefert in unter 60 Minuten. Bei dir vor der Tür.</p>
+      
+      <div class="plz-checker">
+        <input type="text" class="plz-input" id="plzInput" placeholder="Stadt oder PLZ eingeben..." maxlength="50" autocomplete="off">
+        <button class="plz-btn" onclick="App.checkLocation()">Prüfen</button>
+      </div>
+      <div class="plz-result" id="plzResult"></div>
+      
+      <div class="hero-actions">
+        <button class="btn-primary btn-lg" onclick="App.goPage('sortiment')">🛒 Jetzt bestellen</button>
+        <button class="btn-secondary" onclick="App.goPage('lieferung')">📍 Liefergebiet ansehen</button>
+      </div>
+      
+      <div class="hero-stats">
+        <div class="hero-stat"><span class="hs-num">&lt;60</span><span class="hs-lbl">Min Lieferzeit</span></div>
+        <div class="hero-stat"><span class="hs-num">2,99€</span><span class="hs-lbl">Lieferkosten</span></div>
+        <div class="hero-stat"><span class="hs-num">240+</span><span class="hs-lbl">Produkte</span></div>
+        <div class="hero-stat"><span class="hs-num">6/7</span><span class="hs-lbl">Tage offen</span></div>
+      </div>
+    </div>
+  </div>
+  
+  <section class="sec sec-features">
+    <div class="container">
+      <div class="sec-tag">Warum Spätii?</div>
+      <h2 class="sec-title">Weil du das verdient hast.</h2>
+      <div class="features-grid" id="featuresGrid"></div>
+    </div>
+  </section>
+  
+  <section class="sec sec-popular">
+    <div class="container">
+      <div class="sec-header">
+        <div>
+          <div class="sec-tag">🔥 Bestseller</div>
+          <h2 class="sec-title">Top-Produkte heute.</h2>
+        </div>
+        <button class="link-btn" onclick="App.goPage('sortiment')">Alle ansehen →</button>
+      </div>
+      <div class="prod-scroll" id="popularProducts"></div>
+    </div>
+  </section>
+  
+  <section class="sec sec-quicklists">
+    <div class="container">
+      <div class="sec-tag">⚡ Express-Bestellen</div>
+      <h2 class="sec-title">In 1 Klick Warenkorb füllen.</h2>
+      <p class="sec-sub">Vorgefertigte Sets für jeden Anlass. Klick = alles im Warenkorb.</p>
+      <div class="quicklists-grid" id="quicklistsGrid"></div>
+    </div>
+  </section>
+  
+  <section class="sec sec-cta">
+    <div class="container cta-box">
+      <h2>Hunger? Durst? Linz schläft – wir nicht.</h2>
+      <p>Wir liefern in unter einer Stunde. Wenn nicht: Rabattcode für dich.</p>
+      <button class="btn-primary btn-lg" onclick="App.goPage('sortiment')">Jetzt bestellen →</button>
+    </div>
+  </section>
+</section>
+
+<!-- ── PAGE: SORTIMENT ── -->
+<section class="page" id="page-sortiment">
+  <div class="prod-banner">
+    <div class="prod-banner-bg"></div>
+    <div class="prod-banner-floating" id="floatingProds"></div>
+    <div class="prod-banner-particles" id="bannerParticles"></div>
+    <div class="prod-banner-content">
+      <span class="hero-tag">🛍 SORTIMENT</span>
+      <h1 class="prod-banner-title">Über <span class="grad-text">240</span> Produkte.</h1>
+      <p class="prod-banner-sub">23 Kategorien · Alles für deinen Abend</p>
+      <div class="ticker-pill">
+        <span class="ticker-label">🔥 Beliebt:</span>
+        <div class="ticker-content" id="prodTicker"><span>Lade...</span></div>
+      </div>
+    </div>
+  </div>
+  
+  <section class="sec">
+    <div class="container">
+      <div class="sec-tag">Kategorien</div>
+      <h2 class="sec-title">Was darf's sein?</h2>
+      <div class="cat-grid" id="catGrid"></div>
+    </div>
+  </section>
+  
+  <section class="sec" id="allProducts">
+    <div class="container">
+      <div class="sec-header">
+        <div>
+          <div class="sec-tag">🛒 Alle Produkte</div>
+          <h2 class="sec-title" id="prodGridTitle">Alle Artikel</h2>
+        </div>
+        <button class="link-btn" id="clearFilterBtn" style="display:none" onclick="App.clearFilter()">✕ Filter zurücksetzen</button>
+      </div>
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" class="search-input" placeholder="Suche nach Produkt oder Kategorie..." maxlength="60" oninput="App.onSearch(this.value)" autocomplete="off">
+        <button class="search-clear" onclick="App.clearSearch()" aria-label="Leeren">✕</button>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+      
+      <!-- Sort & Filter -->
+      <div class="filters-bar">
+        <div class="filter-group">
+          <span class="filter-label">Sortieren:</span>
+          <select id="sortSelect" class="filter-select" onchange="App.changeSort(this.value)">
+            <option value="default">⭐ Empfohlen</option>
+            <option value="price-asc">💰 Preis ↑</option>
+            <option value="price-desc">💰 Preis ↓</option>
+            <option value="name-asc">🔤 A-Z</option>
+            <option value="name-desc">🔤 Z-A</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">Preis:</span>
+          <button class="filter-pill active" data-price="all" onclick="App.filterPrice('all')">Alle</button>
+          <button class="filter-pill" data-price="3" onclick="App.filterPrice('3')">&lt;3€</button>
+          <button class="filter-pill" data-price="5" onclick="App.filterPrice('5')">&lt;5€</button>
+          <button class="filter-pill" data-price="10" onclick="App.filterPrice('10')">&lt;10€</button>
+        </div>
+        <div class="filter-group">
+          <button class="filter-pill" id="favOnlyBtn" onclick="App.toggleFavOnly()">💜 Nur Favoriten</button>
+        </div>
+      </div>
+      
+      <div class="prod-grid" id="productsGrid"></div>
+    </div>
+  </section>
+  
+  <section class="sec">
+    <div class="container">
+      <div class="sec-tag">🎁 Kombi-Pakete</div>
+      <h2 class="sec-title">Perfekte Abend-Pakete.</h2>
+      <p class="sec-sub">Günstiger als einzeln. Klick auf "Tauschen" um Produkte zu wechseln.</p>
+      <div class="bundle-grid" id="bundlesGrid"></div>
+    </div>
+  </section>
+</section>
+
+<!-- ── PAGE: DEALS ── -->
+<section class="page" id="page-deals">
+  <section class="sec">
+    <div class="container">
+      <div class="sec-tag">⚡ Flash Deals</div>
+      <h2 class="sec-title">Heute's beste Preise.</h2>
+      <div class="deals-hero">
+        <div>
+          <h3>Deal des Tages läuft!</h3>
+          <p>Preise gelten nur solange Vorrat – jetzt zuschlagen!</p>
+        </div>
+        <div class="big-timer">
+          <div class="timer-block"><div class="tn" id="timerH">01</div><div class="tl">Stunden</div></div>
+          <div class="timer-sep">:</div>
+          <div class="timer-block"><div class="tn" id="timerM">47</div><div class="tl">Minuten</div></div>
+          <div class="timer-sep">:</div>
+          <div class="timer-block"><div class="tn" id="timerS">22</div><div class="tl">Sekunden</div></div>
+        </div>
+      </div>
+      <div class="prod-grid" id="dealsGrid"></div>
+    </div>
+  </section>
+  
+  <section class="sec">
+    <div class="container">
+      <div class="guarantees">
+        <div class="g-item"><span>🚗</span><div><strong>Lieferung &lt;60 Min</strong><br>Sonst Rabattcode</div></div>
+        <div class="g-item"><span>♻️</span><div><strong>Cash-Pfand</strong><br>0,25€ direkt vom Fahrer</div></div>
+        <div class="g-item"><span>💳</span><div><strong>Alle Zahlungen</strong><br>Karte, Bar, Apple/Google Pay</div></div>
+        <div class="g-item"><span>🔒</span><div><strong>100% sicher</strong><br>Verschlüsselte Bestellung</div></div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ── PAGE: COMMUNITY ── -->
+<section class="page" id="page-community">
+  <section class="sec">
+    <div class="container">
+      <div class="sec-tag">⚔️ Community Battle Pass</div>
+      <h2 class="sec-title">Gemeinsam bestellen – alle gewinnen!</h2>
+      
+      <div class="bp-card">
+        <div class="bp-header">
+          <div>
+            <div class="bp-live"><span class="live-dot"></span> LIVE · Heute</div>
+            <div class="bp-sub">Bestellungen in Linz & Umgebung</div>
+          </div>
+          <div class="bp-counter" id="bpCounter">0</div>
+        </div>
+        <div class="bp-bar">
+          <div class="bp-bar-fill" id="bpBarFill"></div>
+        </div>
+        <div class="bp-milestones">
+          <span>0</span><span>25</span><span>50</span><span>75</span><span>100</span>
+        </div>
+        <div class="bp-rewards" id="bpRewards"></div>
+      </div>
+      
+      <div class="grid-2 mt-3">
+        <div class="card-glass">
+          <div class="sec-tag">🏅 Stempelkarte</div>
+          <h3>5 Bestellungen = Gratis Produkt</h3>
+          <div class="stamps" id="stamps"></div>
+          <p class="muted small mt-1" id="stampsTxt"></p>
+        </div>
+        <div class="card-glass">
+          <div class="sec-tag">⭐ Mein Level</div>
+          <h3 id="levelTitle">Bronze-Kunde</h3>
+          <div class="level-info" id="levelInfo"></div>
+        </div>
+      </div>
+      
+      <div class="friend-section mt-3">
+        <div>
+          <div class="sec-tag">🎁 Freunde einladen</div>
+          <h3>5€ für deinen Freund · 5€ für dich</h3>
+          <p class="muted">Lade einen Freund ein. Bei seiner ersten Bestellung mit deinem Code: <strong>5€ Geschenk</strong> für ihn, <strong>5€ Bonus</strong> für dich!</p>
+          <div class="perks">
+            <span class="perk">✨ Unbegrenzt einladen</span>
+            <span class="perk">🚀 Sofort einlösbar</span>
+            <span class="perk">💯 Kostenlos</span>
+          </div>
+        </div>
+        <button class="btn-primary btn-lg" onclick="App.openInvite()">🎁 Code holen →</button>
+      </div>
+    </div>
+  </section>
+  
+  <section class="sec sec-insta">
+    <div class="container text-center">
+      <div class="sec-tag">📸 Instagram</div>
+      <h2 class="sec-title">@spaetii.linz</h2>
+      <p class="sec-sub">Behind-the-Scenes, Flash Deals, Fahrer-Stories</p>
+      <div class="insta-grid" id="instaGrid"></div>
+      <a href="https://www.instagram.com/spaetii.linz" target="_blank" rel="noopener" class="insta-follow">📸 Auf Instagram folgen</a>
+    </div>
+  </section>
+  
+  <section class="sec">
+    <div class="container">
+      <div class="sec-tag">⭐ Bewertungen</div>
+      <h2 class="sec-title">Was Linz über uns sagt.</h2>
+      <div class="reviews-grid" id="reviewsGrid"></div>
+    </div>
+  </section>
+</section>
+
+<!-- ── PAGE: LIEFERUNG ── -->
+<section class="page" id="page-lieferung">
+  <section class="sec">
+    <div class="container">
+      <div class="sec-tag">🚗 Lieferung</div>
+      <h2 class="sec-title">Wir liefern hierhin.</h2>
+      
+      <div class="zones-card">
+        <h3 class="zone-title zone-a">🏙 Zone A · MBW €29,90</h3>
+        <p class="muted small">Stadt Linz und unmittelbare Umgebung</p>
+        <div class="chips" id="zoneAChips"></div>
+      </div>
+      
+      <div class="zones-card mt-3">
+        <h3 class="zone-title zone-b">🌄 Zone B · MBW €49,90</h3>
+        <p class="muted small">Erweitertes Einzugsgebiet</p>
+        <div class="chips" id="zoneBChips"></div>
+      </div>
+      
+      <div class="hours-card mt-3">
+        <h3>🕐 Öffnungszeiten</h3>
+        <div class="hours-list">
+          <div class="hr"><span>Montag</span><span class="closed">Geschlossen</span></div>
+          <div class="hr"><span>Dienstag</span><span>19:00 – 24:00</span></div>
+          <div class="hr"><span>Mittwoch</span><span>19:00 – 24:00</span></div>
+          <div class="hr"><span>Donnerstag</span><span>19:00 – 24:00</span></div>
+          <div class="hr open"><span>Freitag</span><span>19:00 – 02:00 ⭐</span></div>
+          <div class="hr open"><span>Samstag</span><span>19:00 – 02:00 ⭐</span></div>
+          <div class="hr"><span>Sonntag</span><span>19:00 – 24:00</span></div>
+        </div>
+      </div>
+      
+      <div class="faq-card mt-3">
+        <h3>❓ Häufige Fragen</h3>
+        <div id="faqList"></div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ── PAGE: WUNSCHLISTE ── -->
+<section class="page" id="page-wishlist">
+  <section class="sec">
+    <div class="container">
+      <div class="sec-tag">💜 Deine Wunschliste</div>
+      <h2 class="sec-title">Deine Favoriten.</h2>
+      <p class="sec-sub">Klick auf das 🤍-Symbol auf jedem Produkt, um es hier zu speichern.</p>
+      
+      <div id="wishlistContent">
+        <!-- Wird via JS gerendert -->
+      </div>
+    </div>
+  </section>
+  
+  <section class="sec">
+    <div class="container">
+      <div class="sec-tag">🕐 Zuletzt angesehen</div>
+      <h2 class="sec-title">Vielleicht doch nochmal?</h2>
+      <div class="prod-grid" id="recentlyViewed"></div>
+    </div>
+  </section>
+</section>
+
+<!-- ── PAGE: KONTAKT ── -->
+<section class="page" id="page-kontakt">
+  <section class="sec">
+    <div class="container">
+      <div class="sec-tag">📞 Kontakt</div>
+      <h2 class="sec-title">Brauchst du Hilfe?</h2>
+      
+      <div class="grid-2">
+        <div class="card-glass">
+          <h3>💬 Schnellkontakt</h3>
+          <p class="muted">Am schnellsten erreichst du uns über WhatsApp.</p>
+          <button class="btn-wa btn-lg" onclick="App.contactWhatsApp()">💬 WhatsApp öffnen</button>
+          <div class="contact-list mt-2">
+            <a href="https://www.instagram.com/spaetii.linz" target="_blank" rel="noopener" class="contact-link">📸 Instagram @spaetii.linz</a>
+            <a href="https://www.spaetii.at/contact-4" target="_blank" rel="noopener" class="contact-link">📧 Kontakt-Formular</a>
+            <a href="https://www.spaetii.at/beschwerden" target="_blank" rel="noopener" class="contact-link">📋 Beschwerden</a>
+          </div>
+        </div>
+        <div class="card-glass">
+          <h3>📧 Newsletter</h3>
+          <p class="muted">10% Code + Flash Deals zuerst. Kein Spam.</p>
+          <div class="newsletter-form">
+            <input type="email" id="newsletterEmail" placeholder="dein@email.at" maxlength="100" autocomplete="email">
+            <button class="btn-primary" onclick="App.subscribeNewsletter()">Anmelden</button>
+          </div>
+          <p class="micro muted mt-1">Mit der Anmeldung akzeptierst du die <a href="https://www.spaetii.at/datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a>.</p>
+        </div>
+      </div>
+      
+      <div class="legal-grid mt-3">
+        <a href="https://www.spaetii.at/agb" target="_blank" rel="noopener" class="legal-link">📋 AGB</a>
+        <a href="https://www.spaetii.at/datenschutz" target="_blank" rel="noopener" class="legal-link">🔒 Datenschutz</a>
+        <a href="https://www.spaetii.at/widerrufsrecht" target="_blank" rel="noopener" class="legal-link">↩️ Widerrufsrecht</a>
+        <a href="https://www.spaetii.at/impressum" target="_blank" rel="noopener" class="legal-link">📜 Impressum</a>
+        <a href="https://www.spaetii.at/cookies" target="_blank" rel="noopener" class="legal-link">🍪 Cookies</a>
+        <a href="https://www.spaetii.at/versandrichtlinien" target="_blank" rel="noopener" class="legal-link">🚚 Versand</a>
+      </div>
+    </div>
+  </section>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-in">
+    <div class="footer-col">
+      <div class="footer-logo">🌙 SPÄTII</div>
+      <p class="muted small">Dein Nacht-Supermarkt für Linz & Umgebung. Auto-Lieferung in unter 60 Minuten.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Schnellzugriff</h4>
+      <button onclick="App.goPage('sortiment')">Sortiment</button>
+      <button onclick="App.goPage('deals')">Flash Deals</button>
+      <button onclick="App.goPage('lieferung')">Lieferung</button>
+      <button onclick="App.goPage('community')">Community</button>
+    </div>
+    <div class="footer-col">
+      <h4>Kontakt</h4>
+      <button onclick="App.contactWhatsApp()">💬 WhatsApp</button>
+      <a href="https://www.instagram.com/spaetii.linz" target="_blank" rel="noopener">📸 Instagram</a>
+      <a href="https://www.spaetii.at/contact-4" target="_blank" rel="noopener">📧 Email</a>
+    </div>
+    <div class="footer-col">
+      <h4>Rechtlich</h4>
+      <a href="https://www.spaetii.at/agb" target="_blank" rel="noopener">AGB</a>
+      <a href="https://www.spaetii.at/datenschutz" target="_blank" rel="noopener">Datenschutz</a>
+      <a href="https://www.spaetii.at/impressum" target="_blank" rel="noopener">Impressum</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 Spätii Linz · Made with 🌙 in Linz
+  </div>
+</footer>
+
+<!-- ═══ FLOATING ELEMENTS ═══ -->
+
+<!-- WhatsApp Floater -->
+<button class="wa-floater" onclick="App.contactWhatsApp()" title="Per WhatsApp bestellen" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32" width="28" height="28" fill="#fff"><path d="M16 0C7.16 0 0 7.16 0 16c0 2.83.74 5.49 2.04 7.81L0 32l8.4-2.21A15.94 15.94 0 0 0 16 32c8.84 0 16-7.16 16-16S24.84 0 16 0zm7.27 19.34c-.4-.2-2.36-1.16-2.72-1.29-.36-.13-.63-.2-.9.2-.27.4-1.03 1.29-1.27 1.56-.23.27-.47.3-.87.1-.4-.2-1.69-.62-3.22-1.99-1.19-1.06-1.99-2.37-2.23-2.77-.23-.4-.02-.62.18-.82.18-.18.4-.47.6-.7.2-.23.27-.4.4-.67.13-.27.07-.5-.03-.7-.1-.2-.9-2.17-1.23-2.97-.32-.78-.65-.67-.9-.68-.23-.01-.5-.01-.77-.01s-.7.1-1.07.5-1.4 1.37-1.4 3.34 1.43 3.87 1.63 4.14c.2.27 2.83 4.32 6.86 6.06 4.03 1.74 4.03 1.16 4.76 1.09.73-.07 2.36-.96 2.69-1.89.33-.93.33-1.72.23-1.89-.1-.17-.37-.27-.77-.47z"/></svg>
+</button>
+
+<!-- Sticky Mobile CTA -->
+<div class="sticky-cta" id="stickyCta">
+  <button class="btn-primary" onclick="App.goPage('sortiment')">🛒 Bestellen · &lt;60 Min</button>
+</div>
+
+<!-- ═══ MODALS ═══ -->
+
+<!-- Cart Drawer -->
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h3>🛒 Warenkorb</h3>
+    <button class="modal-x" onclick="App.closeCart()" aria-label="Schließen">✕</button>
+  </div>
+  <div class="cart-body" id="cartBody"></div>
+  <div class="cart-footer" id="cartFooter"></div>
+</div>
+<div class="cart-overlay" id="cartOverlay" onclick="App.closeCart()"></div>
+
+<!-- Product Detail Modal -->
+<div class="modal" id="productModal" onclick="if(event.target===this)App.closeProductModal()">
+  <div class="modal-box product-modal-box">
+    <button class="modal-x" onclick="App.closeProductModal()" aria-label="Schließen">✕</button>
+    <div class="pm-emoji" id="pmEmoji">🍺</div>
+    <div class="pm-tags" id="pmTags"></div>
+    <h3 class="pm-name" id="pmName">Produktname</h3>
+    <p class="pm-size" id="pmSize">Größe</p>
+    <div class="pm-price-row" id="pmPriceRow"></div>
+    <div class="pm-actions">
+      <button class="btn-secondary" onclick="App.closeProductModal()">Zurück</button>
+      <button class="btn-primary" id="pmAddBtn">+ In den Warenkorb</button>
+    </div>
+  </div>
+</div>
+
+<!-- Zones Modal -->
+<div class="modal" id="zonesModal" onclick="if(event.target===this)App.closeZones()">
+  <div class="modal-box modal-md">
+    <button class="modal-x" onclick="App.closeZones()" aria-label="Schließen">✕</button>
+    <span class="modal-em">📍</span>
+    <h3 class="modal-title">Alle Lieferorte</h3>
+    <p class="modal-sub">Wir liefern in folgende Städte und Gemeinden:</p>
+    <div class="zones-modal-content" id="zonesModalContent"></div>
+    <button class="btn-primary mt-2" onclick="App.closeZones();App.goPage('lieferung')">Zur Lieferung-Seite →</button>
+  </div>
+</div>
+
+<!-- Pfand Modal -->
+<div class="modal" id="pfandModal" onclick="if(event.target===this)App.closePfand()">
+  <div class="modal-box">
+    <button class="modal-x" onclick="App.closePfand()" aria-label="Schließen">✕</button>
+    <span class="modal-em">💰</span>
+    <h3 class="modal-title">Pfand = Sofort Cash</h3>
+    <p class="modal-sub"><strong style="color:var(--cyn)">0,25€ pro Flasche, direkt vom Fahrer in bar.</strong></p>
+    <div class="pfand-steps">
+      <div class="pfand-step"><span>1️⃣</span><div><strong>Pfandflaschen bereitstellen</strong><br><small class="muted">Vor der Tür oder beim Übergeben</small></div></div>
+      <div class="pfand-step"><span>2️⃣</span><div><strong>Fahrer zählt durch</strong><br><small class="muted">Schnell und transparent</small></div></div>
+      <div class="pfand-step"><span>3️⃣</span><div><strong>Cash auf Hand</strong><br><small class="muted">Sofort, kein Verrechnen</small></div></div>
+    </div>
+    <button class="btn-primary mt-2" onclick="App.closePfand()">Verstanden</button>
+  </div>
+</div>
+
+<!-- Invite Modal -->
+<div class="modal" id="inviteModal" onclick="if(event.target===this)App.closeInvite()">
+  <div class="modal-box">
+    <button class="modal-x" onclick="App.closeInvite()" aria-label="Schließen">✕</button>
+    <span class="modal-em">🎁</span>
+    <h3 class="modal-title">Freunde einladen</h3>
+    <p class="modal-sub">Teile deinen Code. Bei <strong>erster Bestellung</strong> deines Freundes bekommt er <strong style="color:var(--cyn)">5€ Geschenk</strong>. Du bekommst <strong style="color:var(--pur)">5€ Bonus</strong>!</p>
+    <div class="invite-code" id="inviteCodeDisplay" onclick="App.copyInviteCode()">FREUND-XXXX</div>
+    <p class="micro muted">Tippe zum Kopieren</p>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="App.closeInvite()">Schließen</button>
+      <button class="btn-primary" onclick="App.shareInvite()">📣 Jetzt teilen</button>
+    </div>
+  </div>
+</div>
+
+<!-- Address Modal -->
+<div class="modal" id="addressModal" onclick="if(event.target===this)App.closeAddress()">
+  <div class="modal-box modal-md">
+    <button class="modal-x" onclick="App.closeAddress()" aria-label="Schließen">✕</button>
+    <span class="modal-em">📍</span>
+    <h3 class="modal-title">Lieferadresse</h3>
+    <p class="modal-sub">Wir speichern deine Adresse lokal. Du brauchst sie nur einmal eingeben.</p>
+    <div class="address-form">
+      <label>Vor- und Nachname *</label>
+      <input type="text" id="addrName" maxlength="100" placeholder="Max Mustermann" autocomplete="name">
+      <label>Straße + Hausnummer *</label>
+      <input type="text" id="addrStreet" maxlength="200" placeholder="Linzer Straße 42" autocomplete="street-address">
+      <div class="grid-1-2">
+        <div>
+          <label>PLZ *</label>
+          <input type="text" id="addrPlz" maxlength="4" inputmode="numeric" placeholder="4020" autocomplete="postal-code">
+        </div>
+        <div>
+          <label>Stadt *</label>
+          <input type="text" id="addrCity" maxlength="100" placeholder="Linz" autocomplete="address-level2">
+        </div>
+      </div>
+      <label>Telefon (optional)</label>
+      <input type="tel" id="addrPhone" maxlength="20" placeholder="+43 660 1234567" autocomplete="tel">
+      <label>Zahlungsart</label>
+      <select id="addrPayment">
+        <option>Bar bei Lieferung</option>
+        <option>Karte bei Lieferung</option>
+        <option>PayPal (Link via WhatsApp)</option>
+        <option>Apple Pay (vor Ort)</option>
+        <option>Google Pay (vor Ort)</option>
+      </select>
+      <label>Anmerkung (optional)</label>
+      <textarea id="addrNote" maxlength="300" placeholder="z.B. Klingel funktioniert nicht..."></textarea>
+    </div>
+    <p class="micro muted">🔒 Adresse wird <strong>nur lokal</strong> gespeichert. Übermittlung nur bei Bestellung.</p>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="App.closeAddress()">Abbrechen</button>
+      <button class="btn-wa" onclick="App.submitAddressOrder()">💬 Speichern & Bestellen</button>
+    </div>
+  </div>
+</div>
+
+<!-- Reward Modal -->
+<div class="modal" id="rewardModal" onclick="if(event.target===this)App.closeReward()">
+  <div class="modal-box">
+    <button class="modal-x" onclick="App.closeReward()" aria-label="Schließen">✕</button>
+    <span class="modal-em" id="rewardEmoji">🎉</span>
+    <h3 class="modal-title" id="rewardTitle">Belohnung freigeschaltet!</h3>
+    <p class="modal-sub" id="rewardSub">Dein Code:</p>
+    <div class="invite-code" id="rewardCode" onclick="App.copyRewardCode()">CODE</div>
+    <p class="micro muted">Tippe zum Kopieren · Gültig 48h</p>
+    <button class="btn-primary mt-2" onclick="App.closeReward()">Schließen</button>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- COOKIE BANNER (DSGVO) -->
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-content">
+    <div class="cookie-text">
+      <strong>🍪 Cookies & Datenschutz</strong>
+      <p>Wir nutzen <strong>nur technisch notwendige Cookies</strong> (Warenkorb, Theme). Keine Tracking-Cookies, kein Verkauf deiner Daten. <a href="https://www.spaetii.at/datenschutz" target="_blank" rel="noopener">Mehr erfahren</a></p>
+    </div>
+    <div class="cookie-actions">
+      <button class="btn-secondary" onclick="App.cookieDecline()">Nur Notwendige</button>
+      <button class="btn-primary" onclick="App.cookieAccept()">✓ Verstanden</button>
+    </div>
+  </div>
+</div>
+
+<!-- INSTALL APP PROMPT -->
+<div class="install-prompt" id="installPrompt">
+  <div class="install-icon">📱</div>
+  <div class="install-text">
+    <strong>Spätii als App installieren</strong>
+    <p class="muted small">Schneller Zugriff · Offline-Modus · Wie eine echte App</p>
+  </div>
+  <div class="install-actions">
+    <button class="btn-secondary" onclick="App.installDismiss()">Später</button>
+    <button class="btn-primary" onclick="App.installApp()">📲 Installieren</button>
+  </div>
+</div>
+
+<!-- ═══ SCRIPTS ═══ -->
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+  // PWA Service Worker Registration
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(() => console.log('🌙 Spätii PWA aktiv'))
+        .catch((e) => console.log('SW failed:', e));
+    });
+  }
+  
+  // Install Prompt Handler
+  let deferredPrompt = null;
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    // Show install prompt after 30 seconds if not dismissed
+    setTimeout(() => {
+      try {
+        if (!localStorage.getItem('sp_installDismissed')) {
+          document.getElementById('installPrompt')?.classList.add('show');
+        }
+      } catch(err) {}
+    }, 30000);
+  });
+  window.App = window.App || {};
+  window.App.installApp = function() {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(() => {
+        deferredPrompt = null;
+        document.getElementById('installPrompt')?.classList.remove('show');
+      });
+    }
+  };
+  window.App.installDismiss = function() {
+    document.getElementById('installPrompt')?.classList.remove('show');
+    try { localStorage.setItem('sp_installDismissed', '1'); } catch(e) {}
+  };
+</script>
+</body>
+</html>
